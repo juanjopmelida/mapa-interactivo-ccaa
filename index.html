@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html>
+<head>
+<!-- incluyo las librerías -->
+<link rel="stylesheet" href="https://unpkg.com/leaflet@1.0.3/dist/leaflet.css" />
+<script src="https://unpkg.com/leaflet@1.0.3/dist/leaflet.js"></script>
+<script type="text/javascript" src="ccaa.js"></script>
+<!-- aqui irá el estilo del mapa -->
+<style>
+    body {
+        margin: 0;
+        padding: 0;
+    }
+    #map {
+        position: absolute;
+        top: 0;
+        bottom: 0;
+        width: 100%;
+    }
+</style>
+</head>
+<body>
+<!-- Este es el contenedor del mapa -->
+<div id="map"></div>
+<!-- Aqui pondré mi JS con la definición de mi mapa -->
+<script>
+    var map = L.map('map').setView([40.2085, -3.7130], 6);
+
+    var osmLayer = L.tileLayer('http://{s}.tile.osm.org/{z}/{x}/{y}.png', {
+        attribution: '&copy; <a href="http://osm.org/copyright">OpenStreetMap<\/a> contributors'
+    }).addTo(map);
+
+    L.control.scale().addTo(map);
+
+    L.geoJson(ccaa).addTo(map);
+</script>
+</body>
+</html>
